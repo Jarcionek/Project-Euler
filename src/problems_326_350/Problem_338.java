@@ -12,13 +12,14 @@ public class Problem_338 {
         long start = System.currentTimeMillis();
 
         int N = 15;
-        for (int i = 1; i <= N; i++) {
-            System.out.printf(i + ". ");
-            for (int j = 1; j <= i; j++) {
-                System.out.print(F(j, i) + " ");
-            }
-            System.out.println();
-        }
+//        for (int i = 1; i <= N; i++) {
+//            System.out.printf(i + ". ");
+//            for (int j = 1; j <= i; j++) {
+//                System.out.print(F(j, i) + " ");
+//            }
+//            System.out.println();
+//        }
+        print(20);
 
         System.out.println();
         System.out.println(G(N));
@@ -50,5 +51,36 @@ public class Problem_338 {
             }
         }
         return result;
+    }
+    private static void print(int n) {
+        for (int i = 1; i <= n; i++) {
+                int r = 0;
+                for (int j = 0; j < i; j++) {
+                        System.out.print("\t");
+                }
+
+                for (int j = i; j <= n; j++) {
+                        System.out.print(F(i, j) + "\t");
+                        r += F(i, j);
+                }
+                System.out.println(i + "\t" + r);
+        }
+
+        System.out.print("\t");
+
+        for (int i = 1; i <= n; i++) {
+                System.out.print(i + "\t");
+        }
+
+        System.out.println("\t");
+        System.out.print("\t");
+
+        for (int i = 1; i <= n; i++) {
+                int r = 0;
+                for (int j = 1; j <= i; j++) {
+                        r += F(j, i);
+                }
+                System.out.print(r + "\t");
+        }
     }
 }
