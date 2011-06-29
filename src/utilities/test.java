@@ -6,9 +6,9 @@ package utilities;
  */
 public class test {
     public static void main(String[] args) {
-//        System.out.println(Prime.getPrimeFactorization(20));
-        for (int i = 0; i < 20; i++) {
-            System.out.println(Prime.getPrimeFactorization(i));
+        for (int i = 10; i <= 100000000; i *= 10) {
+            Prime.sieve(i);
+            System.out.println(i + ": " + (1d * Prime.getNumberOfPrimes() / i));
         }
     }
     private static int f(int n) {

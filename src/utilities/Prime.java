@@ -18,7 +18,7 @@ import java.util.List;
  *
  * All found prime numbers are stored as a static array list.
  *
- * @version 1.0 21/06/2011
+ * @version 1.01 29/06/2011
  * @author Jaroslaw Pawlak
  */
 public class Prime {
@@ -137,7 +137,8 @@ public class Prime {
     }
 
     /**
-     * This method really does what its name says it does.
+     * This method really does what its name says it does. Negative numbers are
+     * considered not prime.
      * @param number a number to be checked
      * @return true if <code>number</code> is prime, false otherwise
      * @throws IllegalArgumentException
@@ -292,7 +293,7 @@ public class Prime {
      * prime numbers
      */
     private static boolean isDivisible(long number) {
-        for (int i = 0; i < PRIME.size(); i++) {
+        for (int i = 0; PRIME.get(i) * PRIME.get(i) <= number; i++) {
             if (number % PRIME.get(i) == 0) {
                 return true;
             }
