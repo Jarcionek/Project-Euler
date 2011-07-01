@@ -1,15 +1,16 @@
 package utilities;
 
-
 /**
  * @author Jaroslaw Pawlak
  */
 public class test {
-    public static void main(String[] args) {
-        for (int i = 10; i <= 100000000; i *= 10) {
-            Prime.sieve(i);
-            System.out.println(i + ": " + (1d * Prime.getNumberOfPrimes() / i));
+    public static void main(String[] args) throws Exception {
+        long start = System.currentTimeMillis();
+        Prime.sieve(10);
+        for (int i = 0; i < Prime.getNumberOfPrimes(); i++) {
+            System.out.println(Prime.get(i));
         }
+        System.out.println((System.currentTimeMillis() - start) + " ms");
     }
     private static int f(int n) {
         return n == 0? 1 : n * f(n-1);

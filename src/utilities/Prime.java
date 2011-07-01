@@ -1,6 +1,7 @@
 package utilities;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 /**
@@ -240,6 +241,8 @@ public class Prime {
 
     /**
      * Finds all the prime numbers which are smaller than <code>number</code>.
+     * This method may generate more prime numbers than is asked for.
+     * <p>
      * This method uses sieve of Eratosthenes so it works extremaly fast,
      * but requires a lot of memory (it may require to change memory available
      * for JVM for bigger numbers). E.g. for 2*10^9 it requires 250MB.
@@ -251,17 +254,19 @@ public class Prime {
     public static void sieve(int number) {
         if (number <= 0) {
             return;
+        } else if (number + 1 < 0) { //overflow
+            number--;
         }
-        boolean[] notprime = new boolean[number + 1];
-        for (int i = 2; i < notprime.length; i++) {
-            if (!notprime[i]) {
-                for (int j = i + i; j < notprime.length; j += i) {
-                    notprime[j] = true;
+        BitSet notprime = new BitSet(number + 1);
+        for (int i = 2; i < notprime.size(); i++) {
+            if (!notprime.get(i)) {
+                for (int j = i + i; j < notprime.size(); j += i) {
+                    notprime.set(j, true);
                 }
             }
         }
-        for (int i = (int) getBiggest() + 1; i < notprime.length; i++) {
-            if (!notprime[i]) {
+        for (int i = (int) getBiggest() + 1; i < notprime.size(); i++) {
+            if (!notprime.get(i)) {
                 PRIME.add(0L + i);
             }
         }
