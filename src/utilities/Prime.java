@@ -69,6 +69,23 @@ public class Prime {
         }
         return result;
     }
+    
+     //FIXME returns the sum of prime divisors, not all divisors
+//    public static int getSumOfDivisors(long number) {
+//        while (getBiggest() <= number) {
+//            addNew();
+//        }
+//        
+//        int result = 0;
+//        for (int i = 0; Prime.get(i) <= number; i++) {
+//            if (number % PRIME.get(i) == 0) {
+//                result += PRIME.get(i);
+//            }
+//        }
+//        System.out.println("n: " + number);
+//        System.out.println("r: " + result);
+//        return result;
+//    }
 
     /**
      * Returns i'th prime number, where 0'th is 2. If <code>i</code> is greater
@@ -247,7 +264,7 @@ public class Prime {
      * but requires a lot of memory (it may require to change memory available
      * for JVM for bigger numbers). E.g. for 2*10^9 it requires 250MB.
      * If you know that you will need large prime numbers, it is recommended
-     * to invoke this method first. If <code>number <= 0</code> this method
+     * to invoke this method first. If <code>number &lt;= 0</code> this method
      * does nothing.
      * @param number the biggest number which should be checked if is prime
      */
@@ -278,6 +295,10 @@ public class Prime {
      */
     public static long getBiggest() {
         return PRIME.get(PRIME.size() - 1);
+    }
+    
+    public static Iterable<Long> allPrimeNumbers() {
+        return PRIME;
     }
 
     

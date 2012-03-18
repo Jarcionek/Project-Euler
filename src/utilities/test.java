@@ -6,10 +6,12 @@ package utilities;
 public class test {
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
-        Prime.sieve(10);
-        for (int i = 0; i < Prime.getNumberOfPrimes(); i++) {
-            System.out.println(Prime.get(i));
+        Prime.sieve(500000000);
+        while (Prime.getBiggest() < Integer.MAX_VALUE) {
+            Prime.get(Prime.getNumberOfPrimes());
         }
+        System.out.println("biggest: " + Prime.getBiggest());
+        System.out.println("size: " + Prime.getNumberOfPrimes());
         System.out.println((System.currentTimeMillis() - start) + " ms");
     }
     private static int f(int n) {
